@@ -1,4 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const analyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -6,12 +11,12 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   turbopack: {
     rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
+      '*.css': {
+        loaders: ['@tailwindcss/turbopack'],
+        as: '*.css',
       },
     },
   },
 };
 
-export default nextConfig;
+export default analyzer(nextConfig);
