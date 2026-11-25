@@ -38,39 +38,75 @@ export function Navbar() {
           </Link>
         </nav>
 
-        <a
-          href={SCHOOL_INFO.phoneHref}
-          className="flex min-h-11 shrink-0 items-center rounded-full bg-white px-4 py-2 text-xs font-semibold text-black transition hover:bg-amber-400 sm:text-sm"
-        >
-          {SCHOOL_INFO.phoneDisplay}
-        </a>
+        <div className="flex shrink-0 items-center gap-2">
+          <a
+            href={SCHOOL_INFO.phoneHref}
+            aria-label={`Κλήση στο ${SCHOOL_INFO.phoneDisplay}`}
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-white px-3 py-2 text-xs font-semibold text-black transition hover:bg-amber-400 sm:min-w-0 sm:px-4 sm:text-sm"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-4 sm:hidden"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span className="hidden sm:inline">{SCHOOL_INFO.phoneDisplay}</span>
+          </a>
+          <details className="relative lg:hidden">
+            <summary
+              aria-label="Μενού πλοήγησης"
+              className="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center rounded-full border border-white/10 text-zinc-300 transition hover:border-white/20 hover:text-white [&::-webkit-details-marker]:hidden"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                className="size-5"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </summary>
+            <nav
+              aria-label="Πλοήγηση κινητού"
+              className="absolute top-full right-0 z-50 mt-2 w-64 rounded-2xl border border-white/10 bg-[#131316] p-2 text-sm text-zinc-300 shadow-2xl"
+            >
+              <Link
+                href="/diplomata"
+                className="flex min-h-11 items-center rounded-xl px-3 transition hover:bg-white/5 hover:text-white"
+              >
+                Άδειες οδήγησης
+              </Link>
+              <Link
+                href="/epaggelmatikes-adeies"
+                className="flex min-h-11 items-center rounded-xl px-3 transition hover:bg-white/5 hover:text-white"
+              >
+                Επαγγελματικές άδειες
+              </Link>
+              <Link
+                href="/scholi"
+                className="flex min-h-11 items-center rounded-xl px-3 transition hover:bg-white/5 hover:text-white"
+              >
+                Η σχολή μας
+              </Link>
+              <Link
+                href="/epikoinonia"
+                className="flex min-h-11 items-center rounded-xl px-3 transition hover:bg-white/5 hover:text-white"
+              >
+                Επικοινωνία
+              </Link>
+            </nav>
+          </details>
+        </div>
       </div>
-      <nav
-        aria-label="Πλοήγηση κινητού"
-        className="grid grid-cols-2 border-t border-white/10 px-4 py-1 text-center text-sm text-zinc-300 sm:grid-cols-4 lg:hidden"
-      >
-        <Link
-          href="/diplomata"
-          className="flex min-h-11 items-center justify-center hover:text-white"
-        >
-          Άδειες οδήγησης
-        </Link>
-        <Link
-          href="/epaggelmatikes-adeies"
-          className="flex min-h-11 items-center justify-center hover:text-white"
-        >
-          Επαγγελματικές άδειες
-        </Link>
-        <Link href="/scholi" className="flex min-h-11 items-center justify-center hover:text-white">
-          Η σχολή μας
-        </Link>
-        <Link
-          href="/epikoinonia"
-          className="flex min-h-11 items-center justify-center hover:text-white"
-        >
-          Επικοινωνία
-        </Link>
-      </nav>
     </header>
   );
 }
