@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { LICENSES, SCHOOL_INFO } from '@/data/schoolData';
+import { LICENSES, PRICING_CONSULTATION, SCHOOL_INFO } from '@/data/schoolData';
 import { Reveal } from '@/components/Reveal';
+import { IllustrativeImageLabel } from '@/components/IllustrativeImageLabel';
 
 export default function HomePage() {
   const proServices = LICENSES.filter((l) => l.category === 'professional');
@@ -46,10 +47,10 @@ export default function HomePage() {
               </Link>
             </div>
           </Reveal>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-[#131316] lg:col-span-5">
+          <div className="relative aspect-[40/27] overflow-hidden rounded-2xl border border-white/10 bg-[#131316] lg:col-span-5">
             <Image
-              src="/images/hero-driving-school.jpg"
-              alt="Εκπαιδευτικό αυτοκίνητο σε δρόμο της Αθήνας"
+              src="/images/homepage-cars.png"
+              alt="Δύο αυτοκίνητα, ένα γκρι και ένα κόκκινο"
               fill
               priority
               sizes="(min-width: 1152px) 444px, (min-width: 1024px) 40vw, 100vw"
@@ -59,28 +60,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. NEIGHBORHOOD & SERVICE MARQUEE */}
-      <div className="overflow-hidden border-y border-white/10 bg-[#111114] py-4">
-        <div className="animate-marquee gap-10 text-xs font-semibold tracking-widest text-zinc-400 uppercase">
-          {[...Array(2)].map((_, loopIdx) => (
-            <div key={loopIdx} className="flex items-center gap-10 pr-10">
-              <span>Ίλιον</span>
-              <span>•</span>
-              <span>Πετρούπολη</span>
-              <span>•</span>
-              <span>Άγιοι Ανάργυροι</span>
-              <span>•</span>
-              <span>Καματερό</span>
-              <span>•</span>
-              <span>Περιστέρι</span>
-              <span>•</span>
-              <span>Αυτοκίνητο & Μοτοσικλέτα</span>
-              <span>•</span>
-              <span>Ειδική Άδεια ΤΑΞΙ</span>
-              <span>•</span>
-            </div>
+      <div className="border-y border-white/10 bg-[#111114] py-5">
+        <ul
+          aria-label="Περιοχές και υπηρεσίες"
+          className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-3 px-4 text-xs font-semibold tracking-wider text-zinc-300 uppercase sm:px-6"
+        >
+          {[
+            'Ίλιον',
+            'Πετρούπολη',
+            'Άγιοι Ανάργυροι',
+            'Καματερό',
+            'Περιστέρι',
+            'Αυτοκίνητο & Μοτοσικλέτα',
+            'Ειδική Άδεια ΤΑΞΙ',
+          ].map((item) => (
+            <li key={item}>{item}</li>
           ))}
-        </div>
+        </ul>
       </div>
 
       {/* 3. LUKAS-STYLE ASYMMETRIC STICKY SERVICES GRID */}
@@ -105,6 +101,13 @@ export default function HomePage() {
               >
                 Έλα από τη σχολή στο Ίλιον →
               </Link>
+              <Image
+                src="/images/road-safety.svg"
+                alt=""
+                width={320}
+                height={180}
+                className="mt-8 w-56"
+              />
             </div>
           </div>
 
@@ -118,11 +121,12 @@ export default function HomePage() {
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-white/10">
                   <Image
                     src={car.image}
-                    alt={car.imageAlt}
+                    alt=""
                     fill
                     sizes="(min-width: 1152px) 570px, (min-width: 1024px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
                   />
+                  <IllustrativeImageLabel />
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm text-amber-400">01</span>
@@ -148,11 +152,12 @@ export default function HomePage() {
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-white/10">
                   <Image
                     src={moto.image}
-                    alt={moto.imageAlt}
+                    alt=""
                     fill
                     sizes="(min-width: 1152px) 570px, (min-width: 1024px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
                   />
+                  <IllustrativeImageLabel />
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm text-amber-400">02</span>
@@ -178,11 +183,12 @@ export default function HomePage() {
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-white/10">
                   <Image
                     src={heavy.image}
-                    alt={heavy.imageAlt}
+                    alt=""
                     fill
                     sizes="(min-width: 1152px) 570px, (min-width: 1024px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
                   />
+                  <IllustrativeImageLabel />
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm text-amber-400">03</span>
@@ -232,11 +238,12 @@ export default function HomePage() {
                   <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-white/10">
                     <Image
                       src={srv.image}
-                      alt={srv.imageAlt}
+                      alt=""
                       fill
                       sizes="(min-width: 1152px) 306px, (min-width: 1024px) 28vw, (min-width: 640px) 45vw, 100vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
                     />
+                    <IllustrativeImageLabel />
                   </div>
                   <span className="inline-block rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-400">
                     {srv.badge}
@@ -256,12 +263,13 @@ export default function HomePage() {
       <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-24 sm:px-6 lg:grid-cols-2">
         <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 bg-[#131316]">
           <Image
-            src="/images/school-interior-team.jpg"
-            alt="Χώρος υποδοχής και αίθουσα θεωρητικών μαθημάτων"
+            src="/images/classroom-illustration.webp"
+            alt="αίθουσας θεωρητικών μαθημάτων"
             fill
             sizes="(min-width: 1152px) 532px, (min-width: 1024px) 46vw, 100vw"
             className="object-cover"
           />
+          <IllustrativeImageLabel />
         </div>
         <div>
           <p className="text-xs font-semibold tracking-widest text-amber-400 uppercase">
@@ -276,6 +284,12 @@ export default function HomePage() {
             <li>Μαθήματα οδήγησης στο Ίλιον με υπομονετικούς εκπαιδευτές.</li>
             <li>Καθοδήγηση για δικαιολογητικά και διαδικασίες σε κάθε στάδιο.</li>
           </ul>
+          <Link
+            href="/scholi"
+            className="mt-6 inline-block text-sm font-semibold text-amber-400 hover:underline"
+          >
+            Γνώρισε τη σχολή και τους ανθρώπους μας →
+          </Link>
         </div>
       </section>
 
@@ -284,6 +298,10 @@ export default function HomePage() {
         <h2 className="text-center text-3xl font-bold text-white">Συχνές Ερωτήσεις</h2>
         <div className="mt-10 space-y-4">
           {[
+            {
+              q: 'Πώς μπορώ να ενημερωθώ για το κόστος;',
+              a: PRICING_CONSULTATION,
+            },
             {
               q: 'Τι χρειάζεται να φέρω την πρώτη μέρα για εγγραφή στη σχολή;',
               a: 'Τα δικαιολογητικά εξαρτώνται από την κατηγορία και την άδεια που ήδη κατέχεις. Επικοινώνησε μαζί μας για να σε καθοδηγήσουμε σχετικά με την ηλεκτρονική αίτηση, το myPhoto και τις ιατρικές εξετάσεις.',
@@ -303,7 +321,12 @@ export default function HomePage() {
             >
               <summary className="flex cursor-pointer items-center justify-between font-semibold text-white">
                 <span>{item.q}</span>
-                <span className="ml-4 text-amber-400 transition group-open:rotate-45">+</span>
+                <span
+                  aria-hidden="true"
+                  className="ml-4 text-amber-400 transition group-open:rotate-45"
+                >
+                  +
+                </span>
               </summary>
               <p className="mt-4 text-sm leading-relaxed text-zinc-400">{item.a}</p>
             </details>

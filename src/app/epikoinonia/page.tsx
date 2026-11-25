@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { SCHOOL_INFO } from '@/data/schoolData';
+import { PRICING_CONSULTATION, SCHOOL_INFO } from '@/data/schoolData';
 import { Reveal } from '@/components/Reveal';
+import { IllustrativeImageLabel } from '@/components/IllustrativeImageLabel';
 
 export const metadata: Metadata = {
   title: 'Επικοινωνία & Τοποθεσία στο Ίλιον',
@@ -22,19 +23,23 @@ export default function EpikoinoniaPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-400">
             Πέρασε από τη σχολή μας στο Ίλιον χωρίς ραντεβού ή κάλεσέ μας για να λύσουμε κάθε απορία
-            σχετικά με το δίπλωμα και το κόστος.
+            σχετικά με το δίπλωμα.
+          </p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+            {PRICING_CONSULTATION}
           </p>
         </div>
       </Reveal>
 
       <div className="relative mt-14 aspect-[21/9] overflow-hidden rounded-2xl border border-white/10 bg-[#131316]">
         <Image
-          src="/images/school-interior-team.jpg"
-          alt="Χώρος υποδοχής και αίθουσα θεωρητικών μαθημάτων"
+          src="/images/classroom-illustration.webp"
+          alt="αίθουσας θεωρητικών μαθημάτων"
           fill
           sizes="(min-width: 1152px) 1104px, 100vw"
           className="object-cover"
         />
+        <IllustrativeImageLabel />
       </div>
 
       <div className="mt-14 grid gap-10 lg:grid-cols-12">

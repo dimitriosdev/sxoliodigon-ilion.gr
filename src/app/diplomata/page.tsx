@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { DRIVING_GROUPS } from '@/data/drivingCategories';
-import { SCHOOL_INFO } from '@/data/schoolData';
+import { PRICING_CONSULTATION, SCHOOL_INFO } from '@/data/schoolData';
+import { IllustrativeImageLabel } from '@/components/IllustrativeImageLabel';
 
 export const metadata: Metadata = {
   title: 'Άδειες Οδήγησης & Π.Ε.Ι.',
@@ -41,6 +43,9 @@ export default function DiplomataOverviewPage() {
           Βρες την κατηγορία για το όχημά σου και ενημερώσου για το Πιστοποιητικό Επαγγελματικής
           Ικανότητας. Οι κατηγορίες διαμορφώθηκαν με το Π.Δ. 51/2012.
         </p>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+          {PRICING_CONSULTATION}
+        </p>
       </header>
 
       <div className="mt-16 space-y-16">
@@ -50,6 +55,16 @@ export default function DiplomataOverviewPage() {
               <div className="lg:sticky lg:top-28">
                 <span className="font-mono text-sm font-bold text-amber-400">0{index + 1}</span>
                 <h2 className="mt-2 text-2xl font-bold text-white">{group.title}</h2>
+                <div className="relative mt-5 aspect-[16/9] overflow-hidden rounded-xl border border-white/10 bg-[#131316]">
+                  <Image
+                    src={group.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1152px) 352px, (min-width: 1024px) 30vw, 100vw"
+                    className="object-cover"
+                  />
+                  <IllustrativeImageLabel />
+                </div>
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">

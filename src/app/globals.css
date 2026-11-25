@@ -18,24 +18,24 @@ body {
   overflow-x: hidden;
 }
 
-/* Infinite Logo / Neighborhood Marquee - 100% GPU CSS */
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+:where(a, button, input, summary):focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 3px;
 }
 
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 28s linear infinite;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Clean FAQ Details Reset */

@@ -2,9 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { LICENSES, SCHOOL_INFO } from '@/data/schoolData';
-import { ADDITIONAL_DRIVING_PAGES } from '@/data/drivingCategories';
+import { INFORMATION_NOTICE, LICENSES, PRICING_CONSULTATION, SCHOOL_INFO } from '@/data/schoolData';
+import { ADDITIONAL_DRIVING_PAGES, DRIVING_GROUPS } from '@/data/drivingCategories';
 import { DocumentChecklist } from '@/components/DocumentChecklist';
+import { IllustrativeImageLabel } from '@/components/IllustrativeImageLabel';
 
 export function generateStaticParams() {
   return [
@@ -35,6 +36,11 @@ export default async function LicenseDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
   const additional = ADDITIONAL_DRIVING_PAGES.find((page) => page.slug === slug);
   if (additional) {
+    const imageSlug =
+      slug === 'pei-emporevmaton' ? 'c-fortigo' : slug === 'pei-epivaton' ? 'd-leoforeio' : slug;
+    const imageGroup = DRIVING_GROUPS.find((group) =>
+      group.items.some((item) => item.slug === imageSlug),
+    );
     return (
       <article className="mx-auto max-w-5xl px-4 pt-12 pb-20 sm:px-6">
         <nav aria-label="Διαδρομή" className="mb-6 text-xs text-zinc-500">
@@ -50,20 +56,41 @@ export default async function LicenseDetailPage({ params }: { params: Promise<{ 
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-300">
             {additional.description}
           </p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+            {PRICING_CONSULTATION}
+          </p>
         </header>
+        {imageGroup && (
+          <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-2xl border border-white/10 bg-[#131316]">
+            <Image
+              src={imageGroup.image}
+              alt={imageGroup.imageAlt}
+              fill
+              sizes="(min-width: 1024px) 960px, 100vw"
+              className="object-cover"
+            />
+            <IllustrativeImageLabel />
+          </div>
+        )}
         <section className="mt-10 rounded-2xl border border-white/10 bg-[#131316] p-7">
           <h2 className="text-xl font-bold text-white">Τι χρειάζεται να γνωρίζεις</h2>
-          <p className="mt-4 leading-relaxed text-zinc-300">{additional.details}</p>
-          <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-            Οι προϋποθέσεις και τα δικαιολογητικά ενδέχεται να αλλάξουν. Επικοινώνησε μαζί μας ή με
-            την αρμόδια Διεύθυνση Μεταφορών για επιβεβαίωση.
-          </p>
-          <a
-            href={additional.source}
-            className="mt-5 inline-block text-sm text-amber-400 hover:underline"
-          >
-            Πηγή πληροφοριών ↗
-          </a>
+          {additional.details.map((detail) => (
+            <p key={detail} className="mt-4 leading-relaxed text-zinc-300">
+              {detail}
+            </p>
+          ))}
+          {additional.electronicApplication && (
+            <>
+              <h3 className="mt-6 text-lg font-semibold text-white">Η διαδικασία</h3>
+              <p className="mt-3 leading-relaxed text-zinc-300">
+                Η αίτηση για e-Δελτίο γίνεται ηλεκτρονικά με κωδικούς Taxisnet. Ανάλογα με την
+                περίπτωση, χρειάζονται ψηφιακή φωτογραφία και υπογραφή, παράβολα και ιατρικές
+                εξετάσεις. Μετά την έκδοση του e-Δελτίου εξουσιοδοτείται η σχολή για τη συνέχεια της
+                διαδικασίας.
+              </p>
+            </>
+          )}
+          <p className="mt-4 text-sm leading-relaxed text-zinc-400">{INFORMATION_NOTICE}</p>
         </section>
         {slug.startsWith('pei') && (
           <nav
@@ -120,12 +147,15 @@ export default async function LicenseDetailPage({ params }: { params: Promise<{ 
             {item.title}
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-400">{item.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+            {PRICING_CONSULTATION}
+          </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <a
               href={SCHOOL_INFO.phoneHref}
               className="rounded-full bg-amber-500 px-6 py-3 text-sm font-bold text-black hover:bg-amber-400"
             >
-              Ρώτησε κόστος & ωράρια: {SCHOOL_INFO.phoneDisplay}
+              Κάλεσέ μας: {SCHOOL_INFO.phoneDisplay}
             </a>
           </div>
         </div>
@@ -138,6 +168,7 @@ export default async function LicenseDetailPage({ params }: { params: Promise<{ 
             sizes="(min-width: 1024px) 390px, 100vw"
             className="object-cover"
           />
+          <IllustrativeImageLabel />
         </div>
       </div>
 
@@ -189,15 +220,24 @@ export default async function LicenseDetailPage({ params }: { params: Promise<{ 
               <details
                 key={idx}
                 open={idx === 0}
-                className="rounded-2xl border border-white/10 bg-[#131316] p-6"
+                className="group rounded-2xl border border-white/10 bg-[#131316] p-6"
               >
-                <summary className="cursor-pointer font-semibold text-white">{faq.q}</summary>
+                <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 font-semibold text-white">
+                  <span>{faq.q}</span>
+                  <span
+                    aria-hidden="true"
+                    className="text-amber-400 transition group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-400">{faq.a}</p>
               </details>
             ))}
           </div>
         </section>
       )}
+      <p className="mt-10 text-sm leading-relaxed text-zinc-400">{INFORMATION_NOTICE}</p>
     </article>
   );
 }

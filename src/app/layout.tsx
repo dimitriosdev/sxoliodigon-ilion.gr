@@ -40,13 +40,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="el" className={manrope.className}>
-      <body className="min-h-screen pb-20 antialiased selection:bg-amber-500 selection:text-black md:pb-0">
+      <body className="min-h-screen pb-[calc(5rem+env(safe-area-inset-bottom))] antialiased selection:bg-amber-500 selection:text-black md:pb-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <a
+          href="#main-content"
+          className="sr-only fixed top-3 left-3 z-[60] rounded-lg bg-amber-500 px-4 py-3 font-semibold text-black focus:not-sr-only"
+        >
+          Μετάβαση στο περιεχόμενο
+        </a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
 
         {/* Lukas-style Editorial Footer with Oversized Wordmark */}
         <footer className="mt-24 border-t border-white/10 bg-[#080809] pt-16 pb-10">
@@ -62,6 +70,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 >
                   {SCHOOL_INFO.phoneDisplay}
                 </a>
+                <div className="mt-4">
+                  <Link href="/scholi" className="text-sm text-zinc-300 hover:text-white">
+                    Η σχολή μας →
+                  </Link>
+                </div>
               </div>
 
               <div>

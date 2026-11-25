@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, lastModified: new Date() },
     { url: `${base}/diplomata`, lastModified: new Date() },
     { url: `${base}/epaggelmatikes-adeies`, lastModified: new Date() },
+    { url: `${base}/scholi`, lastModified: new Date() },
     { url: `${base}/epikoinonia`, lastModified: new Date() },
     ...licenseUrls,
     ...ADDITIONAL_DRIVING_PAGES.map((item) => ({

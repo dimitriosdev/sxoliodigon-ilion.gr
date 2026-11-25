@@ -2,15 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { LICENSES, SCHOOL_INFO } from '@/data/schoolData';
+import { INFORMATION_NOTICE, LICENSES, PRICING_CONSULTATION, SCHOOL_INFO } from '@/data/schoolData';
 import { DocumentChecklist } from '@/components/DocumentChecklist';
-
-const SOURCES: Record<string, string> = {
-  'taxi-arxiki-xorigisi': 'https://drivingschool.gr/epaggelmatikes/taxi.htm',
-  'taxi-ananeosi': 'https://drivingschool.gr/epaggelmatikes/taxi_ananeosi.htm',
-  'taxi-epektasi-nomou': 'https://drivingschool.gr/epaggelmatikes/taxi_epektasi.htm',
-  'karta-psifiakou-taxografou': 'https://drivingschool.gr/epaggelmatikes/karta_odigou.htm',
-};
+import { IllustrativeImageLabel } from '@/components/IllustrativeImageLabel';
 
 export function generateStaticParams() {
   return LICENSES.filter((l) => l.category === 'professional').map((l) => ({
@@ -74,6 +68,9 @@ export default async function ProfessionalServiceDetailPage({
             {item.title}
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-400">{item.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+            {PRICING_CONSULTATION}
+          </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <a
               href={SCHOOL_INFO.phoneHref}
@@ -92,6 +89,7 @@ export default async function ProfessionalServiceDetailPage({
             sizes="(min-width: 1024px) 390px, 100vw"
             className="object-cover"
           />
+          <IllustrativeImageLabel />
         </div>
       </div>
 
@@ -139,22 +137,24 @@ export default async function ProfessionalServiceDetailPage({
               <details
                 key={idx}
                 open={idx === 0}
-                className="rounded-2xl border border-white/10 bg-[#131316] p-6"
+                className="group rounded-2xl border border-white/10 bg-[#131316] p-6"
               >
-                <summary className="cursor-pointer font-semibold text-white">{faq.q}</summary>
+                <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 font-semibold text-white">
+                  <span>{faq.q}</span>
+                  <span
+                    aria-hidden="true"
+                    className="text-amber-400 transition group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-400">{faq.a}</p>
               </details>
             ))}
           </div>
         </section>
       )}
-      <p className="mt-10 text-sm leading-relaxed text-zinc-400">
-        Οι προϋποθέσεις και τα δικαιολογητικά ενδέχεται να αλλάξουν. Επικοινώνησε μαζί μας ή με την
-        αρμόδια Διεύθυνση Μεταφορών για επιβεβαίωση.{' '}
-        <a href={SOURCES[item.slug]} className="text-amber-400 hover:underline">
-          Πηγή πληροφοριών ↗
-        </a>
-      </p>
+      <p className="mt-10 text-sm leading-relaxed text-zinc-400">{INFORMATION_NOTICE}</p>
     </article>
   );
 }

@@ -21,7 +21,10 @@ export function DocumentChecklist({
       <div className="rounded-2xl border border-white/10 bg-[#131316] p-6">
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-white">Τι φέρνεις εσύ</h3>
-          <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400">
+          <span
+            aria-live="polite"
+            className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400"
+          >
             {doneCount}/{userDocs.length} έτοιμα
           </span>
         </div>
@@ -30,26 +33,21 @@ export function DocumentChecklist({
             const isDone = !!checked[idx];
             return (
               <li key={idx}>
-                <button
-                  type="button"
-                  onClick={() => toggle(idx)}
-                  className={`flex w-full items-start gap-3 rounded-xl border p-3.5 text-left transition ${
+                <label
+                  className={`flex min-h-11 w-full cursor-pointer items-start gap-3 rounded-xl border p-3.5 text-left transition ${
                     isDone
-                      ? 'border-emerald-500/30 bg-emerald-500/10 text-zinc-400 line-through'
+                      ? 'border-emerald-500/30 bg-emerald-500/10 text-zinc-300'
                       : 'border-white/10 bg-white/[0.02] text-zinc-200 hover:border-white/25'
                   }`}
                 >
-                  <span
-                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border text-xs ${
-                      isDone
-                        ? 'border-emerald-500 bg-emerald-500 font-bold text-black'
-                        : 'border-zinc-600'
-                    }`}
-                  >
-                    {isDone ? '✓' : ''}
-                  </span>
+                  <input
+                    type="checkbox"
+                    checked={isDone}
+                    onChange={() => toggle(idx)}
+                    className="mt-0.5 h-5 w-5 shrink-0 accent-amber-500"
+                  />
                   <span className="text-sm leading-relaxed">{doc}</span>
-                </button>
+                </label>
               </li>
             );
           })}

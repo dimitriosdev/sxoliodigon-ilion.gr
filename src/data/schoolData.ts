@@ -19,6 +19,12 @@ export interface LicenseItem {
   faqs: { q: string; a: string }[];
 }
 
+export const PRICING_CONSULTATION =
+  'Το κόστος για κάθε υπηρεσία συζητείται σε προσωπική συνάντηση από κοντά. Κάλεσέ μας για να κανονίσουμε τη συνάντησή μας.';
+
+export const INFORMATION_NOTICE =
+  'Οι προϋποθέσεις, τα δικαιολογητικά και οι διαδικασίες ενδέχεται να αλλάξουν ή να διαφέρουν ανά περίπτωση. Επικοινώνησε μαζί μας ή με την αρμόδια Διεύθυνση Μεταφορών για επιβεβαίωση.';
+
 export const SCHOOL_INFO = {
   name: 'Σχολή Οδηγών Ίλιον',
   tagline: 'Σύγχρονη εκπαίδευση οδήγησης & επαγγελματικές άδειες στα Δυτικά Προάστια.',
@@ -29,6 +35,7 @@ export const SCHOOL_INFO = {
   address: 'Leoforos Andrea Papandreou 117, Ilion, Greece 13121', // Συμπλήρωσε ακριβή οδό & αριθμό
   googleMapsUrl: 'https://maps.app.goo.gl/H1uUYKAdSynQC9TP9',
   facebookUrl: 'https://www.facebook.com/sxoli.odigon.ilion/',
+  facebookReviewsUrl: 'https://www.facebook.com/sxoli.odigon.ilion/reviews',
   hours: 'Δευτέρα – Παρασκευή: 10:00 – 14:00 & 17:30 – 21:00',
   neighborhoods: ['Ίλιον', 'Πετρούπολη', 'Άγιοι Ανάργυροι', 'Καματερό', 'Περιστέρι'],
 };
@@ -37,8 +44,8 @@ export const LICENSES: LicenseItem[] = [
   // --- ΜΟΤΟΣΙΚΛΕΤΕΣ ---
   {
     slug: 'am-50cc',
-    image: '/images/moto-a.jpg',
-    imageAlt: 'Μοτοσικλέτα με κράνος σε δρόμο της πόλης',
+    image: '/images/motorcycle.webp',
+    imageAlt: 'μοτοσικλέτας',
     category: 'moto',
     badge: 'Από 16 ετών • Έως 50cc',
     title: 'Δίπλωμα Μοτοποδηλάτου (Κατηγορία AM)',
@@ -97,8 +104,8 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'a1-125cc',
-    image: '/images/moto-a.jpg',
-    imageAlt: 'Μοτοσικλέτα με κράνος σε δρόμο της πόλης',
+    image: '/images/motorcycle.webp',
+    imageAlt: 'μοτοσικλέτας',
     category: 'moto',
     badge: 'Από 18 ετών • Έως 125cc',
     title: 'Δίπλωμα Μοτοσικλέτας Α1 (125cc)',
@@ -153,8 +160,8 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'a2',
-    image: '/images/moto-a.jpg',
-    imageAlt: 'Μοτοσικλέτα με κράνος σε δρόμο της πόλης',
+    image: '/images/motorcycle.webp',
+    imageAlt: 'μοτοσικλέτας',
     category: 'moto',
     badge: 'Από 20 ετών • Έως 35 kW',
     title: 'Δίπλωμα Μοτοσικλέτας Α2 (Μεσαίου Κυβισμού)',
@@ -208,8 +215,8 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'a-aperioristo',
-    image: '/images/moto-a.jpg',
-    imageAlt: 'Μοτοσικλέτα με κράνος σε δρόμο της πόλης',
+    image: '/images/motorcycle.webp',
+    imageAlt: 'μοτοσικλέτας',
     category: 'moto',
     badge: 'Από 24 ετών (ή 22 με Α2) • Απεριόριστα cc',
     title: 'Δίπλωμα Μοτοσικλέτας Κατηγορίας Α (Απεριόριστο)',
@@ -264,8 +271,8 @@ export const LICENSES: LicenseItem[] = [
   // --- ΑΥΤΟΚΙΝΗΤΟ ---
   {
     slug: 'b-autokinito',
-    image: '/images/car-b.jpg',
-    imageAlt: 'Μάθημα οδήγησης αυτοκινήτου με εκπαιδευτή',
+    image: '/images/car-lessons.webp',
+    imageAlt: 'μαθήματος οδήγησης με εκπαιδευτή',
     category: 'car',
     badge: 'Από 18 ετών • Χειροκίνητο & Αυτόματο',
     title: 'Δίπλωμα Αυτοκινήτου (Κατηγορία Β)',
@@ -329,8 +336,8 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'be-rymoulkoumeno',
-    image: '/images/car-b.jpg',
-    imageAlt: 'Μάθημα οδήγησης αυτοκινήτου με εκπαιδευτή',
+    image: '/images/car-lessons.webp',
+    imageAlt: 'μαθήματος οδήγησης με εκπαιδευτή',
     category: 'car',
     badge: 'Απαιτεί Κατηγορία Β • Τρέιλερ & Τροχόσπιτο',
     title: 'Δίπλωμα Αυτοκινήτου με Ρυμουλκούμενο (Κατηγορία Β+Ε)',
@@ -386,18 +393,18 @@ export const LICENSES: LicenseItem[] = [
   // --- ΒΑΡΕΑ ΟΧΗΜΑΤΑ (C1, C, C+E, D1, D, D+E) ---
   {
     slug: 'c1-c-fortiga',
-    image: '/images/heavy-cd.jpg',
-    imageAlt: 'Φορτηγό με ρυμουλκούμενο σε αυτοκινητόδρομο',
+    image: '/images/truck.webp',
+    imageAlt: 'φορτηγού',
     category: 'heavy',
-    badge: 'Από 21 ετών (18 με ΠΕΙ) • Φορτηγά',
+    badge: 'Από 18 ετών (C1) • Φορτηγά',
     title: 'Δίπλωμα Φορτηγού (Κατηγορίες C1 & C)',
     shortTitle: 'Κατηγορίες C1 & C (Φορτηγά)',
     subtitle:
       'Επαγγελματική άδεια οδήγησης για φορτηγά άνω των 3.500 kg (C1 έως 7.500 kg, C απεριόριστου βάρους) με δυνατότητα απόκτησης ΠΕΙ.',
     specs: {
-      minAge: '21 ετών (18 με ΠΕΙ)',
-      theoryHours: '15 ώρες (+ΠΕΙ)',
-      practicalHours: '15 ώρες',
+      minAge: 'Ανά κατηγορία',
+      theoryHours: 'Ανά περίπτωση',
+      practicalHours: 'Ανά περίπτωση',
       validity: '5 έτη',
     },
     userDocuments: [
@@ -446,8 +453,8 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'ce-syromena',
-    image: '/images/heavy-cd.jpg',
-    imageAlt: 'Φορτηγό με ρυμουλκούμενο σε αυτοκινητόδρομο',
+    image: '/images/truck.webp',
+    imageAlt: 'φορτηγού',
     category: 'heavy',
     badge: 'Απαιτεί Κατηγορία C • Νταλίκες & Συρόμενα',
     title: 'Δίπλωμα Νταλίκας / Συρόμενου (Κατηγορία C+E)',
@@ -490,18 +497,18 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'd1-d-de-leoforeia',
-    image: '/images/heavy-cd.jpg',
-    imageAlt: 'Φορτηγό με ρυμουλκούμενο σε αυτοκινητόδρομο',
+    image: '/images/bus.webp',
+    imageAlt: 'λεωφορείου',
     category: 'heavy',
-    badge: 'Από 24 ετών (21 με ΠΕΙ) • Λεωφορεία',
+    badge: 'Από 21 ετών (D1) • Λεωφορεία',
     title: 'Δίπλωμα Λεωφορείου (Κατηγορίες D1, D & D+E)',
     shortTitle: 'Κατηγορίες D1, D & D+E (Λεωφορεία)',
     subtitle:
-      'Άδειες οδήγησης για τουριστικά, αστικά και σχολικά λεωφορεία (D1 έως 16 θέσεις, D άνω των 16 θέσεων, D+E με ρυμουλκούμενο).',
+      'Άδειες οδήγησης λεωφορείου: D1 έως 16 επιβάτες, D για περισσότερους από 8 επιβάτες και D+E με ρυμουλκούμενο.',
     specs: {
-      minAge: '24 ετών (21 με ΠΕΙ)',
-      theoryHours: '15 ώρες (0 αν έχεις C)',
-      practicalHours: '15 ώρες (7 με C)',
+      minAge: 'Ανά κατηγορία',
+      theoryHours: 'Ανά περίπτωση',
+      practicalHours: 'Ανά περίπτωση',
       validity: '5 έτη',
     },
     userDocuments: [
@@ -519,7 +526,7 @@ export const LICENSES: LicenseItem[] = [
       {
         num: '01',
         title: 'Έλεγχος & Ιατρικά',
-        desc: 'Αν έχεις ήδη δίπλωμα C, τα απαιτούμενα μαθήματα μειώνονται στο μισό.',
+        desc: 'Ελέγχουμε την άδεια που ήδη κατέχεις και τα απαιτούμενα μαθήματα και δικαιολογητικά.',
       },
       {
         num: '02',
@@ -536,7 +543,7 @@ export const LICENSES: LicenseItem[] = [
     faqs: [
       {
         q: 'Πόσα μαθήματα γλιτώνω αν έχω ήδη δίπλωμα φορτηγού (C);',
-        a: 'Χρειάζεσαι μόνο 7 ώρες πρακτικής οδήγησης (αντί για 15) και δίνεις μόνο ειδικά θέματα λεωφορείου.',
+        a: 'Για επέκταση από C σε D1 ή D προβλέπονται μειωμένα μαθήματα θεωρίας και πρακτικής. Επικοινώνησε μαζί μας για να ελέγξουμε την περίπτωσή σου.',
       },
     ],
   },
@@ -544,8 +551,8 @@ export const LICENSES: LicenseItem[] = [
   // --- ΕΠΑΓΓΕΛΜΑΤΙΚΕΣ ΥΠΗΡΕΣΙΕΣ ---
   {
     slug: 'taxi-arxiki-xorigisi',
-    image: '/images/taxi-edx.jpg',
-    imageAlt: 'Κίτρινο ταξί σε δρόμο της Αθήνας',
+    image: '/images/taxi-photo.png',
+    imageAlt: 'κίτρινου ταξί',
     category: 'professional',
     badge: 'Ε.Δ.Χ. • Αρχική Χορήγηση',
     title: 'Ειδική Άδεια Οδήγησης Ε.Δ.Χ. (ΤΑΞΙ) – Αρχική Χορήγηση',
@@ -607,8 +614,8 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'taxi-ananeosi',
-    image: '/images/taxi-edx.jpg',
-    imageAlt: 'Κίτρινο ταξί σε δρόμο της Αθήνας',
+    image: '/images/taxi-photo.png',
+    imageAlt: 'κίτρινου ταξί',
     category: 'professional',
     badge: 'Ε.Δ.Χ. • Ανανέωση 5ετίας',
     title: 'Ειδική Άδεια Οδήγησης Ε.Δ.Χ. (ΤΑΞΙ) – Ανανέωση',
@@ -617,8 +624,8 @@ export const LICENSES: LicenseItem[] = [
       'Ανανεώστε την ειδική άδεια ΤΑΞΙ χωρίς ταλαιπωρία και χαμένες εργατοώρες. Αναλαμβάνουμε όλη τη γραφειοκρατία.',
     specs: {
       minAge: 'Κάτοχος Ε.Δ.Χ.',
-      theoryHours: 'Χωρίς εξετάσεις',
-      practicalHours: 'Χωρίς εξετάσεις',
+      theoryHours: 'Ανά περίπτωση',
+      practicalHours: 'Χωρίς πρακτική εξέταση',
       validity: '5 έτη',
     },
     userDocuments: [
@@ -657,15 +664,19 @@ export const LICENSES: LicenseItem[] = [
     ],
     faqs: [
       {
+        q: 'Πότε πρέπει να υποβάλω αίτηση ανανέωσης;',
+        a: 'Η αίτηση πρέπει να υποβληθεί τουλάχιστον δύο μήνες πριν από τη λήξη της ειδικής άδειας. Επικοινώνησε μαζί μας εγκαίρως για να ελέγξουμε τα δικαιολογητικά σου.',
+      },
+      {
         q: 'Υπάρχει πρόστιμο αν έχει λήξει η ειδική άδεια ΤΑΞΙ;',
-        a: 'Η καθυστέρηση μπορεί να επηρεάσει το παράβολο και τη διαδικασία. Επικοινώνησε μαζί μας για να ελέγξουμε την περίπτωσή σου.',
+        a: 'Η καθυστέρηση επηρεάζει το παράβολο και τη διαδικασία. Αν περάσει πενταετία από τη λήξη χωρίς αίτηση ανανέωσης με πλήρη δικαιολογητικά, προβλέπεται επαναχορήγηση με τους όρους αρχικής χορήγησης και γραπτή εξέταση. Επικοινώνησε μαζί μας για έλεγχο.',
       },
     ],
   },
   {
     slug: 'taxi-epektasi-nomou',
-    image: '/images/taxi-edx.jpg',
-    imageAlt: 'Κίτρινο ταξί σε δρόμο της Αθήνας',
+    image: '/images/taxi-photo.png',
+    imageAlt: 'κίτρινου ταξί',
     category: 'professional',
     badge: 'Ε.Δ.Χ. • Επέκταση Περιοχής',
     title: 'Ειδική Άδεια Οδήγησης Ε.Δ.Χ. (ΤΑΞΙ) – Επέκταση σε Άλλο Νομό',
@@ -719,8 +730,8 @@ export const LICENSES: LicenseItem[] = [
   },
   {
     slug: 'karta-psifiakou-taxografou',
-    image: '/images/tachograph.jpg',
-    imageAlt: 'Ψηφιακός ταχογράφος και κάρτα οδηγού σε φορτηγό',
+    image: '/images/tachograph-card.webp',
+    imageAlt: 'ψηφιακού ταχογράφου και κάρτας',
     category: 'professional',
     badge: 'Έξυπνος Ταχογράφος • Νέα Έκδοση / Ανανέωση / Απώλεια',
     title: 'Έκδοση Κάρτας Ψηφιακού Ταχογράφου Οδηγού',
@@ -769,8 +780,12 @@ export const LICENSES: LicenseItem[] = [
     ],
     faqs: [
       {
+        q: 'Σε τι χρησιμεύει η κάρτα οδηγού;',
+        a: 'Η κάρτα ταυτοποιεί τον οδηγό στον ψηφιακό ταχογράφο και αποθηκεύει στοιχεία της δραστηριότητάς του. Είναι προσωπική και ισχύει για πέντε έτη.',
+      },
+      {
         q: 'Πόσο νωρίτερα μπορώ να ανανεώσω την κάρτα ταχογράφου;',
-        a: 'Σύμφωνα με την πηγή, η αίτηση ανανέωσης ισχύουσας κάρτας υποβάλλεται όχι νωρίτερα από δύο μήνες πριν από τη λήξη της.',
+        a: 'Για κάρτα που παραμένει σε ισχύ, η αίτηση ανανέωσης γίνεται δεκτή από δύο μήνες πριν από τη λήξη της.',
       },
       {
         q: 'Τι κάνω αν χάσω ή χαλάσει η κάρτα μου ενώ εργάζομαι;',

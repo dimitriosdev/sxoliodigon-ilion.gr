@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { LICENSES, SCHOOL_INFO } from '@/data/schoolData';
+import { LICENSES, PRICING_CONSULTATION, SCHOOL_INFO } from '@/data/schoolData';
 import { Reveal } from '@/components/Reveal';
+import { IllustrativeImageLabel } from '@/components/IllustrativeImageLabel';
 
 export const metadata: Metadata = {
   title: 'Ειδική Άδεια ΤΑΞΙ & Κάρτα Ψηφιακού Ταχογράφου στο Ίλιον',
@@ -26,6 +27,9 @@ export default function EpaggelmatikesOverviewPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-400">
             Ενημερώσου για την ειδική άδεια ΤΑΞΙ και την κάρτα ψηφιακού ταχογράφου οδηγού.
+          </p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+            {PRICING_CONSULTATION}
           </p>
         </div>
       </Reveal>
@@ -79,11 +83,12 @@ export default function EpaggelmatikesOverviewPage() {
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-white/10">
                   <Image
                     src={srv.image}
-                    alt={srv.imageAlt}
+                    alt=""
                     fill
                     sizes="(min-width: 1152px) 664px, (min-width: 1024px) 60vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
                   />
+                  <IllustrativeImageLabel />
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="font-mono text-sm font-bold text-amber-400">0{idx + 1}</span>
