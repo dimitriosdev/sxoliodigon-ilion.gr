@@ -5,9 +5,9 @@ import { LICENSES, SCHOOL_INFO } from '@/data/schoolData';
 import { Reveal } from '@/components/Reveal';
 
 export const metadata: Metadata = {
-  title: 'Ειδική Άδεια ΤΑΞΙ, ADR & Κάρτα Ψηφιακού Ταχογράφου στο Ίλιον',
+  title: 'Ειδική Άδεια ΤΑΞΙ & Κάρτα Ψηφιακού Ταχογράφου στο Ίλιον',
   description:
-    'Έκδοση και ανανέωση Ειδικής Άδειας Ε.Δ.Χ. (ΤΑΞΙ), επέκταση σε άλλο νομό, πιστοποιητικό ADR και κάρτα ψηφιακού ταχογράφου οδηγού στο Ίλιον.',
+    'Έκδοση και ανανέωση Ειδικής Άδειας Ε.Δ.Χ. (ΤΑΞΙ), επέκταση σε άλλο νομό και κάρτα ψηφιακού ταχογράφου οδηγού στο Ίλιον.',
 };
 
 export default function EpaggelmatikesOverviewPage() {
@@ -19,14 +19,13 @@ export default function EpaggelmatikesOverviewPage() {
       <Reveal>
         <div className="border-b border-white/10 pb-12">
           <span className="inline-block rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-medium text-amber-400">
-            Επαγγελματικές Άδειες & Πιστοποιητικά
+            Επαγγελματικές άδειες
           </span>
           <h1 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-5xl">
-            Ειδική Άδεια ΤΑΞΙ, ADR & Ψηφιακός Ταχογράφος.
+            Επαγγελματικές άδειες
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-400">
-            Αναλαμβάνουμε αυθημερόν τα e-Παράβολα και τη διεκπεραίωση των φακέλων στην Περιφέρεια
-            ώστε να μην χάνεις εργατοώρες.
+            Ενημερώσου για την ειδική άδεια ΤΑΞΙ και την κάρτα ψηφιακού ταχογράφου οδηγού.
           </p>
         </div>
       </Reveal>
@@ -38,7 +37,7 @@ export default function EpaggelmatikesOverviewPage() {
           <div className="space-y-6 lg:sticky lg:top-28">
             <div>
               <p className="text-xs font-semibold tracking-widest text-amber-400 uppercase">
-                5 Εξειδικευμένες Υπηρεσίες
+                4 Υπηρεσίες
               </p>
               <h2 className="mt-2 text-2xl font-bold text-white">
                 Χωρίς ουρές και χαμένα μεροκάματα.
@@ -69,7 +68,7 @@ export default function EpaggelmatikesOverviewPage() {
           </div>
         </div>
 
-        {/* Right Scrolling Column: The 5 Specific Services */}
+        {/* Right Scrolling Column */}
         <div className="space-y-5 lg:col-span-8">
           {services.map((srv, idx) => (
             <Reveal key={srv.slug}>

@@ -10,7 +10,9 @@ export function Navbar() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 font-bold text-black">
             ΣΟ
           </span>
-          <span className="font-semibold tracking-tight text-white">{SCHOOL_INFO.name}</span>
+          <span className="text-sm font-semibold tracking-tight text-white sm:text-base">
+            {SCHOOL_INFO.name}
+          </span>
         </Link>
 
         <nav
@@ -18,10 +20,10 @@ export function Navbar() {
           className="hidden items-center gap-7 text-sm text-zinc-300 md:flex"
         >
           <Link href="/diplomata" className="transition hover:text-white">
-            Αυτοκίνητο & Μηχανή
+            Άδειες οδήγησης
           </Link>
           <Link href="/epaggelmatikes-adeies" className="transition hover:text-white">
-            Ταξί, ADR & Ταχογράφος
+            Επαγγελματικές άδειες
           </Link>
           <Link href="/epikoinonia" className="transition hover:text-white">
             Επικοινωνία
@@ -35,6 +37,20 @@ export function Navbar() {
           {SCHOOL_INFO.phoneDisplay}
         </a>
       </div>
+      <nav
+        aria-label="Πλοήγηση κινητού"
+        className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-white/10 px-4 py-3 text-xs text-zinc-300 md:hidden"
+      >
+        <Link href="/diplomata" className="hover:text-white">
+          Άδειες οδήγησης
+        </Link>
+        <Link href="/epaggelmatikes-adeies" className="hover:text-white">
+          Επαγγελματικές άδειες
+        </Link>
+        <Link href="/epikoinonia" className="hover:text-white">
+          Επικοινωνία
+        </Link>
+      </nav>
     </header>
   );
 }

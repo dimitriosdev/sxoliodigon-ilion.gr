@@ -3,10 +3,14 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { LICENSES, SCHOOL_INFO } from '@/data/schoolData';
+import { ADDITIONAL_DRIVING_PAGES } from '@/data/drivingCategories';
 import { DocumentChecklist } from '@/components/DocumentChecklist';
 
 export function generateStaticParams() {
-  return LICENSES.filter((l) => l.category !== 'professional').map((l) => ({
+  return [
+    ...LICENSES.filter((l) => l.category !== 'professional'),
+    ...ADDITIONAL_DRIVING_PAGES,
+  ].map((l) => ({
     slug: l.slug,
   }));
 }
@@ -17,6 +21,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const additional = ADDITIONAL_DRIVING_PAGES.find((page) => page.slug === slug);
+  if (additional) return { title: additional.title, description: additional.description };
   const item = LICENSES.find((l) => l.category !== 'professional' && l.slug === slug);
   if (!item) return {};
   return {
@@ -27,6 +33,57 @@ export async function generateMetadata({
 
 export default async function LicenseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const additional = ADDITIONAL_DRIVING_PAGES.find((page) => page.slug === slug);
+  if (additional) {
+    return (
+      <article className="mx-auto max-w-5xl px-4 pt-12 pb-20 sm:px-6">
+        <nav aria-label="Διαδρομή" className="mb-6 text-xs text-zinc-500">
+          <Link href="/diplomata" className="hover:text-amber-400">
+            ← Άδειες οδήγησης
+          </Link>
+        </nav>
+        <header className="border-b border-white/10 pb-10">
+          <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs text-amber-400">
+            Άδειες οδήγησης & Π.Ε.Ι.
+          </span>
+          <h1 className="mt-5 text-3xl font-bold text-white sm:text-5xl">{additional.title}</h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-300">
+            {additional.description}
+          </p>
+        </header>
+        <section className="mt-10 rounded-2xl border border-white/10 bg-[#131316] p-7">
+          <h2 className="text-xl font-bold text-white">Τι χρειάζεται να γνωρίζεις</h2>
+          <p className="mt-4 leading-relaxed text-zinc-300">{additional.details}</p>
+          <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+            Οι προϋποθέσεις και τα δικαιολογητικά ενδέχεται να αλλάξουν. Επικοινώνησε μαζί μας ή με
+            την αρμόδια Διεύθυνση Μεταφορών για επιβεβαίωση.
+          </p>
+          <a
+            href={additional.source}
+            className="mt-5 inline-block text-sm text-amber-400 hover:underline"
+          >
+            Πηγή πληροφοριών ↗
+          </a>
+        </section>
+        {slug.startsWith('pei') && (
+          <nav
+            aria-label="Σελίδες Π.Ε.Ι."
+            className="mt-8 flex flex-wrap gap-4 text-sm text-amber-400"
+          >
+            <Link href="/diplomata/pei">Γενικές πληροφορίες</Link>
+            <Link href="/diplomata/pei-emporevmaton">Π.Ε.Ι. εμπορευμάτων</Link>
+            <Link href="/diplomata/pei-epivaton">Π.Ε.Ι. επιβατών</Link>
+          </nav>
+        )}
+        <a
+          href={SCHOOL_INFO.phoneHref}
+          className="mt-8 inline-block rounded-full bg-amber-500 px-6 py-3 text-sm font-bold text-black hover:bg-amber-400"
+        >
+          Κάλεσέ μας: {SCHOOL_INFO.phoneDisplay}
+        </a>
+      </article>
+    );
+  }
   const item = LICENSES.find((l) => l.category !== 'professional' && l.slug === slug);
   if (!item) notFound();
 
@@ -102,6 +159,10 @@ export default async function LicenseDetailPage({ params }: { params: Promise<{ 
       {/* BLOCK 3: Interactive Document Checklist */}
       <section className="mt-14">
         <h2 className="mb-6 text-2xl font-bold text-white">Απαραίτητα Δικαιολογητικά</h2>
+        <p className="mb-6 text-sm leading-relaxed text-zinc-400">
+          Η αίτηση για e-Δελτίο υποβάλλεται ηλεκτρονικά. Τα δικαιολογητικά και τα μαθήματα
+          εξαρτώνται από την περίπτωσή σου· επικοινώνησε μαζί μας για επιβεβαίωση.
+        </p>
         <DocumentChecklist userDocs={item.userDocuments} schoolHandles={item.schoolHandles} />
       </section>
 

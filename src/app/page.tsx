@@ -28,7 +28,7 @@ export default function HomePage() {
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
               Σύγχρονα εκπαιδευτικά οχήματα, υπομονετικοί εκπαιδευτές και πλήρης διεκπεραίωση
-              παραβόλων & δικαιολογητικών για αυτοκίνητο, μοτοσικλέτα, ΤΑΞΙ, ADR και ταχογράφο.
+              παραβόλων & δικαιολογητικών για αυτοκίνητο, μοτοσικλέτα, ΤΑΞΙ και ταχογράφο.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -77,8 +77,6 @@ export default function HomePage() {
               <span>Αυτοκίνητο & Μοτοσικλέτα</span>
               <span>•</span>
               <span>Ειδική Άδεια ΤΑΞΙ</span>
-              <span>•</span>
-              <span>Πιστοποιητικό ADR</span>
               <span>•</span>
             </div>
           ))}
@@ -174,7 +172,7 @@ export default function HomePage() {
 
             <Reveal>
               <Link
-                href="/diplomata/c1-c-fortiga"
+                href="/diplomata"
                 className="group block rounded-2xl border border-white/10 bg-[#131316] p-7 transition hover:border-amber-500/50"
               >
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-white/10">
@@ -205,7 +203,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. THE 5 SPECIFIC PROFESSIONAL SERVICES */}
+      {/* 4. PROFESSIONAL SERVICES */}
       <section className="border-t border-white/10 bg-[#0e0e11] py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
@@ -213,9 +211,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold tracking-widest text-amber-400 uppercase">
                 Επαγγελματικές Άδειες & Πιστοποιητικά
               </p>
-              <h2 className="mt-2 text-3xl font-bold text-white">
-                ΤΑΞΙ, ADR & Ψηφιακός Ταχογράφος
-              </h2>
+              <h2 className="mt-2 text-3xl font-bold text-white">ΤΑΞΙ & Ψηφιακός Ταχογράφος</h2>
             </div>
             <Link
               href="/epaggelmatikes-adeies"
@@ -290,11 +286,11 @@ export default function HomePage() {
           {[
             {
               q: 'Τι χρειάζεται να φέρω την πρώτη μέρα για εγγραφή στη σχολή;',
-              a: 'Αρκεί η αστυνομική σου ταυτότητα (ή διαβατήριο), το ΑΦΜ σου και 4 έγχρωμες φωτογραφίες διαβατηρίου. Αναλαμβάνουμε εμείς την έκδοση των e-Παραβόλων και τα παραπεμπτικά για Παθολόγο και Οφθαλμίατρο.',
+              a: 'Τα δικαιολογητικά εξαρτώνται από την κατηγορία και την άδεια που ήδη κατέχεις. Επικοινώνησε μαζί μας για να σε καθοδηγήσουμε σχετικά με την ηλεκτρονική αίτηση, το myPhoto και τις ιατρικές εξετάσεις.',
             },
             {
               q: 'Αναλαμβάνετε ανανέωση ειδικής άδειας ΤΑΞΙ ή κάρτας ταχογράφου χωρίς να χάσω μεροκάματο;',
-              a: 'Ναι. Μας φέρνεις τα δικαιολογητικά σου, εκδίδουμε τα παράβολα και καταθέτουμε τον φάκελο ηλεκτρονικά στην Περιφέρεια αυθημερόν.',
+              a: 'Επικοινώνησε μαζί μας για να ελέγξουμε τα δικαιολογητικά και τη διαδικασία για την περίπτωσή σου.',
             },
             {
               q: 'Πού βρίσκεται η σχολή οδηγών και ποιες περιοχές εξυπηρετεί;',

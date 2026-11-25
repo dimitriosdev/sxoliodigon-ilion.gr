@@ -13,11 +13,11 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Σχολή Οδηγών Ίλιον | Διπλώματα Αυτοκινήτου, Μηχανής, Ταξί & ADR',
+    default: 'Σχολή Οδηγών Ίλιον | Διπλώματα Αυτοκινήτου, Μηχανής, Ταξί',
     template: '%s | Σχολή Οδηγών Ίλιον',
   },
   description:
-    'Σχολή οδηγών στο Ίλιον. Διπλώματα αυτοκινήτου (Β), μοτοσικλέτας (AM, A1, A2, A), φορτηγού/λεωφορείου (C, D), ειδική άδεια ΤΑΞΙ, ADR και κάρτα ψηφιακού ταχογράφου.',
+    'Σχολή οδηγών στο Ίλιον. Διπλώματα αυτοκινήτου (Β), μοτοσικλέτας (AM, A1, A2, A), φορτηγού/λεωφορείου (C, D), ειδική άδεια ΤΑΞΙ και κάρτα ψηφιακού ταχογράφου.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -65,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
 
               <div>
-                <p className="text-xs tracking-widest text-zinc-500 uppercase">Κατηγορίες</p>
+                <p className="text-xs tracking-widest text-zinc-500 uppercase">Άδειες οδήγησης</p>
                 <ul className="mt-3 space-y-2 text-sm text-zinc-300">
                   <li>
                     <Link href="/diplomata/b-autokinito" className="hover:text-white">
@@ -78,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </Link>
                   </li>
                   <li>
-                    <Link href="/diplomata/c1-c-fortiga" className="hover:text-white">
+                    <Link href="/diplomata" className="hover:text-white">
                       Φορτηγά & Λεωφορεία (C, D)
                     </Link>
                   </li>
@@ -86,7 +86,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
 
               <div>
-                <p className="text-xs tracking-widest text-zinc-500 uppercase">Επαγγελματικά</p>
+                <p className="text-xs tracking-widest text-zinc-500 uppercase">
+                  Επαγγελματικές άδειες
+                </p>
                 <ul className="mt-3 space-y-2 text-sm text-zinc-300">
                   <li>
                     <Link
@@ -96,14 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       Ειδική Άδεια ΤΑΞΙ
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/epaggelmatikes-adeies/adr-pistopoiitiko"
-                      className="hover:text-white"
-                    >
-                      Πιστοποιητικό ADR
-                    </Link>
-                  </li>
+
                   <li>
                     <Link
                       href="/epaggelmatikes-adeies/karta-psifiakou-taxografou"

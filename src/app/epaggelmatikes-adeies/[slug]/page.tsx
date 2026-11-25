@@ -5,6 +5,13 @@ import type { Metadata } from 'next';
 import { LICENSES, SCHOOL_INFO } from '@/data/schoolData';
 import { DocumentChecklist } from '@/components/DocumentChecklist';
 
+const SOURCES: Record<string, string> = {
+  'taxi-arxiki-xorigisi': 'https://drivingschool.gr/epaggelmatikes/taxi.htm',
+  'taxi-ananeosi': 'https://drivingschool.gr/epaggelmatikes/taxi_ananeosi.htm',
+  'taxi-epektasi-nomou': 'https://drivingschool.gr/epaggelmatikes/taxi_epektasi.htm',
+  'karta-psifiakou-taxografou': 'https://drivingschool.gr/epaggelmatikes/karta_odigou.htm',
+};
+
 export function generateStaticParams() {
   return LICENSES.filter((l) => l.category === 'professional').map((l) => ({
     slug: l.slug,
@@ -141,6 +148,13 @@ export default async function ProfessionalServiceDetailPage({
           </div>
         </section>
       )}
+      <p className="mt-10 text-sm leading-relaxed text-zinc-400">
+        Οι προϋποθέσεις και τα δικαιολογητικά ενδέχεται να αλλάξουν. Επικοινώνησε μαζί μας ή με την
+        αρμόδια Διεύθυνση Μεταφορών για επιβεβαίωση.{' '}
+        <a href={SOURCES[item.slug]} className="text-amber-400 hover:underline">
+          Πηγή πληροφοριών ↗
+        </a>
+      </p>
     </article>
   );
 }
